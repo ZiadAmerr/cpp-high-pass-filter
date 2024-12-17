@@ -15,23 +15,20 @@ cd cpp-high-pass-filter/
 Modify main.cpp with your arguments (it definitely can be modified from the shell script, but I just don't have time to do that right now).
 ```cpp
  #define FILTER_SIZE 3                  // Must be an odd number
- #define NUM_NODES 4                    // Number of nodes to use
  #define PATH "path/to/your/image.png"  // Path to the desired image
 ```
 
-Run the build the script
-```bash
-./run.sh
-```
-
-If the previous command fails due to the flle not having executable permissions, execute the following command and then re-execute the previous one.
+Add execution permissions to the run file
 ```bash
 chmod +x run.sh
 ```
 
-Run the executable file on parallel systems
+Run the build the script
 ```bash
-mpirun -np NUM_NODES ./build/hpc_proj  # Make sure to replace NUM_NODES with the same value in main.cpp
+./run.sh -n 4  # To run the code with 4 nodes
+
+# OR
+./run.sh -d -n 4  # To run the code with debugging
 ```
 
 

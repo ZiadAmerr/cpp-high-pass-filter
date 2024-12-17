@@ -3,14 +3,23 @@
 # Set the path to your build directory
 BUILD_DIR="./build"
 
-
 # Flag to enable debugging
 DEBUG=false
+NUM_NODES=1       # Default number of nodes
+FILTER_SIZE=3     # Default filter size
+IMAGE_PATH=""     # Default image path
 
-# Parse the -d argument for debugging
-if [ "$1" == "-d" ]; then
-    DEBUG=true
-fi
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -d) DEBUG=true ;;                   # Enable debug mode
+        -n) NUM_NODES="$2"; shift ;;        # Set number of nodes
+        -f) FILTER_SIZE="$2"; shift ;;      # Set filter size
+        -p) IMAGE_PATH="$2"; shift ;;       # Set image path
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
 
 # Function to run commands silently unless DEBUG is enabled
 run_command() {
@@ -20,6 +29,17 @@ run_command() {
         "$@" >/dev/null 2>&1  # Silence output
     fi
 }
+
+# Validate arguments
+if [ -z "$IMAGE_PATH" ]; then
+    echo "Error: Image path (-p) is required."
+    exit 1
+fi
+
+if (( FILTER_SIZE % 2 == 0 )); then
+    echo "Error: FILTER_SIZE (-f) must be an odd number."
+    exit 1
+fi
 
 # Check if the build directory exists, if not, create it
 if [ ! -d "$BUILD_DIR" ]; then
@@ -39,6 +59,8 @@ run_command echo "Building the project..."
 run_command make
 
 # Optionally, run the program after building
-run_command echo "Running the program..."
-./hpc_proj
+run_command echo "Running the program with $NUM_NODES nodes, FILTER_SIZE $FILTER_SIZE, and PATH $IMAGE_PATH..."
+mpirun -np "$NUM_NODES" ./hpc_proj "$FILTER_SIZE" "$IMAGE_PATH"
 
+open ../output.png
+open $IMAGE_PATH

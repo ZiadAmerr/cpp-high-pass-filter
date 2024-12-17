@@ -8,14 +8,6 @@
 using namespace std;
 using namespace cv;
 
-// Define constants for filter size and number of nodes
-#define FILTER_SIZE 3 // Must be an odd number
-#define NUM_NODES 4   // Number of nodes to use
-#define PATH "/Users/ziad/Desktop/Fall24/proj_HPC/proj/lena.png"
-
-// Assert filter size is odd
-static_assert(FILTER_SIZE % 2 == 1, "Error: Filter size must be an odd number");
-
 // Function to generate a high-pass filter matrix dynamically
 vector<vector<int>> generateHighPassFilter(int size)
 {
@@ -53,16 +45,21 @@ int main(int argc, char *argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    if (size != NUM_NODES)
+    // Parse arguments
+    if (argc != 3)
     {
-        if (rank == 0) {
-            cout << "Number of nodes is " << NUM_NODES << ".\n";
-            cerr << "Error: Number of nodes must be " << NUM_NODES << ".\n";
-        }
+        cerr << "Usage: " << argv[0] << " <FILTER_SIZE> <IMAGE_PATH>" << endl;
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
-    const char *imagePath = PATH;
+    int FILTER_SIZE = atoi(argv[1]);
+    if (FILTER_SIZE % 2 == 0 || FILTER_SIZE < 1)
+    {
+        cerr << "Error: FILTER_SIZE must be an odd positive integer." << endl;
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
+
+    const char *imagePath = argv[2];
     Mat image;
     int rows, cols;
 
@@ -75,7 +72,7 @@ int main(int argc, char *argv[])
         image = imread(imagePath, IMREAD_GRAYSCALE);
         if (image.empty())
         {
-            cerr << "Error: Image cannot be loaded!\n";
+            cerr << "Error: Image cannot be loaded from path: " << imagePath << endl;
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
         rows = image.rows;
