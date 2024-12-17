@@ -8,7 +8,7 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Create the executable
-add_executable(hpc_proj ../main.cpp)  # Make sure to specify the correct relative path to main.cpp
+add_executable(hpc_proj ../main.cpp)
 
 # Link OpenCV libraries to your executable
 target_link_libraries(hpc_proj ${OpenCV_LIBS})
