@@ -24,6 +24,11 @@ Run the build the script
 ./run.sh
 ```
 
+If the previous command fails due to the flle not having executable permissions, execute the following command and then re-execute the previous one.
+```bash
+chmod +x run.sh
+```
+
 Run the executable file on parallel systems
 ```bash
 mpirun -np NUM_NODES ./build/hpc_proj  # Make sure to replace NUM_NODES with the same value in main.cpp
