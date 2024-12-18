@@ -7,19 +7,19 @@ Parallelization of High-Pass Filter using MPI.
 To run the code, follow these steps:
 Clone the repository and navigate to it.
 ```bash
-$ git clone https://github.com/ZiadAmerr/cpp-high-pass-filter --depth=1  # Low depth for fast and lightweight clone
+git clone https://github.com/ZiadAmerr/cpp-high-pass-filter --depth=1  # Low depth for fast and lightweight clone
 
-$ cd cpp-high-pass-filter/
+cd cpp-high-pass-filter/
 ```
 
 Add execution permissions to the run file
 ```bash
-$ chmod +x run.sh
+chmod +x run.sh
 ```
 
 Run the script with the suitable arguments.
 ```bash
-$ ./run.sh  -d  # to enable debugging (default is disabled)
+./run.sh  -d  # to enable debugging (default is disabled)
             -n 4  # To run with 4 nodes (default is 1, must be less than the number of cores)
             -f 3  # To set the filter size to 3 (default is 3, must be odd)
             -p /path/to/image.jpg  # To set the image path (required, must be an absolute path, relative paths may behave unexpectedly)
@@ -27,15 +27,15 @@ $ ./run.sh  -d  # to enable debugging (default is disabled)
             -t  # To enable measuring the time taken for the program to finish (default is disabled)
 
 # Example
-$ ./run.sh -n 4 -f 3 -p /path/to/image.jpg -o -t
-$ ./run.sh -d -n 8 -f 9 -p /path/to/image.jpg -t
+./run.sh -n 4 -f 3 -p /path/to/image.jpg -o -t
+./run.sh -d -n 8 -f 9 -p /path/to/image.jpg -t
 ```
 
 To run the quick benchmarking script.
 ```bash
-$ chmod +x run_tests.sh  # Add execution permissions to the script
+chmod +x run_tests.sh  # Add execution permissions to the script
 
-$ ./run_tests.sh  # Run the script
+./run_tests.sh  # Run the script
 >>> SIZE: 360, NODES: 2, OUT: 470.6 ms ± 6.0 ms
 >>> SIZE: 360, NODES: 4, OUT: 461.6 ms ± 12.3 ms
 >>> SIZE: 360, NODES: 8, OUT: 626.0 ms ± 20.5 ms
