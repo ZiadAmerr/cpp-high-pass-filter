@@ -25,14 +25,11 @@ double applyKernel(const Mat &image, const vector<vector<int>> &kernel, int x, i
     double sum = 0.0;
 
     for (int i = -half; i <= half; ++i)
-    {
-        for (int j = -half; j <= half; ++j)
-        {
+        for (int j = -half; j <= half; ++j) {
             int row = min(max(x + i, 0), image.rows - 1);
             int col = min(max(y + j, 0), image.cols - 1);
             sum += image.at<uchar>(row, col) * kernel[i + half][j + half];
         }
-    }
 
     return sum;
 }
