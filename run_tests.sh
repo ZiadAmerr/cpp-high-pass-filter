@@ -2,7 +2,7 @@
 
 # List of sizes and node counts
 sizes=("360" "480" "720" "1080" "2K" "4K")
-nodes=("1" "2" "4" "8")
+nodes=("1" "2" "3" "4" "5" "6" "7" "8")
 
 # Loop through all combinations
 for size in "${sizes[@]}"; do

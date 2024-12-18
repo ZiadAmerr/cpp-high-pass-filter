@@ -36,30 +36,23 @@ To run the quick benchmarking script.
 chmod +x run_tests.sh  # Add execution permissions to the script
 
 ./run_tests.sh  # Run the script
->>> SIZE: 360, NODES: 2, OUT: 470.6 ms ± 6.0 ms
->>> SIZE: 360, NODES: 4, OUT: 461.6 ms ± 12.3 ms
->>> SIZE: 360, NODES: 8, OUT: 626.0 ms ± 20.5 ms
->>> SIZE: 480, NODES: 1, OUT: 667.7 ms ± 8.9 ms
->>> SIZE: 480, NODES: 2, OUT: 541.2 ms ± 6.4 ms
->>> SIZE: 480, NODES: 4, OUT: 498.6 ms ± 3.6 ms
->>> SIZE: 480, NODES: 8, OUT: 677.7 ms ± 43.1 ms
->>> SIZE: 720, NODES: 1, OUT: 1.088 s ± 0.018 s
->>> SIZE: 720, NODES: 2, OUT: 757.3 ms ± 9.2 ms
->>> SIZE: 720, NODES: 4, OUT: 618.9 ms ± 13.5 ms
->>> SIZE: 720, NODES: 8, OUT: 754.5 ms ± 8.5 ms
->>> SIZE: 1080, NODES: 1, OUT: 2.007 s ± 0.016 s
->>> SIZE: 1080, NODES: 2, OUT: 1.235 s ± 0.014 s
->>> SIZE: 1080, NODES: 4, OUT: 882.0 ms ± 24.5 ms
->>> SIZE: 1080, NODES: 8, OUT: 988.8 ms ± 40.0 ms
->>> SIZE: 2K, NODES: 1, OUT: 6.296 s ± 0.014 s
->>> SIZE: 2K, NODES: 2, OUT: 3.444 s ± 0.016 s
->>> SIZE: 2K, NODES: 4, OUT: 2.263 s ± 0.113 s
->>> SIZE: 2K, NODES: 8, OUT: 2.095 s ± 0.053 s
->>> SIZE: 4K, NODES: 1, OUT: 26.761 s ± 1.260 s
->>> SIZE: 4K, NODES: 2, OUT: 15.933 s ± 0.236 s
->>> SIZE: 4K, NODES: 4, OUT: 10.563 s ± 0.234 s
->>> SIZE: 4K, NODES: 8, OUT: 7.821 s ± 0.084 s
+>>> SIZE: 360, NODES: 1, OUT: 706.9 ms ± 574.1 ms
+>>> SIZE: 360, NODES: 2, OUT: 469.3 ms ± 5.9 ms
+>>> SIZE: 360, NODES: 3, OUT: 464.2 ms ± 5.9 ms
+>>> SIZE: 360, NODES: 4, OUT: 470.0 ms ± 17.3 ms
+>>> SIZE: 360, NODES: 5, OUT: 498.1 ms ± 5.6 ms
+>>> SIZE: 360, NODES: 6, OUT: 548.5 ms ± 16.2 ms
+>>> SIZE: 360, NODES: 7, OUT: 588.4 ms ± 10.3 ms
+>>> SIZE: 360, NODES: 8, OUT: 630.8 ms ± 16.5 ms
+>>> SIZE: 480, NODES: 1, OUT: 669.2 ms ± 2.3 ms
+>>> SIZE: 480, NODES: 2, OUT: 541.2 ms ± 1.7 ms
+>>> SIZE: 480, NODES: 3, OUT: 516.0 ms ± 7.5 ms
+>>> ...
 ```
+
+## Benchmarking Results
+The benchmarking results are stored in the `benchmark.jpg` file, and you can see it as follows:
+![Benchmarking Results](benchmark.jpg)
 
 ## Prerequisites
 The code needs `OpenCV`, `MPI` installed on the machine, the code was tested and confirmed to work on ARM64 systems, on OS X specifically, and is not guaranteed to work correctly on other systems (again, no time for this extensibility!)
