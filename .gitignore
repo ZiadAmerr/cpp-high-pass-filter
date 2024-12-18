@@ -4,3 +4,4 @@ build/
 *.png
 .myenv/
 .DS_Store
+activate

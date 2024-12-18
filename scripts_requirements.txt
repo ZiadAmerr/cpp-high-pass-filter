@@ -1,0 +1,3 @@
+https://www.open-mpi.org/
+https://opencv.org/
+https://github.com/sharkdp/hyperfine
